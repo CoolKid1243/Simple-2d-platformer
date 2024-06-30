@@ -7,17 +7,14 @@ Camera::Camera(int screenWidth, int screenHeight) :
 }
 
 void Camera::update(const sf::Vector2f& targetPosition, float deltaTime) {
-    // Smoothly follow the player with some delay (lerp effect)
     sf::Vector2f currentPosition = view.getCenter();
     sf::Vector2f newPosition = currentPosition + (targetPosition - currentPosition) * deltaTime * speed;
     view.setCenter(newPosition);
 
-    // Update mountain position based on camera position for parallax effect
-    // Example: Move mountains at half the speed of the camera
     float parallaxFactor = 0.5f;
     float mountainX = targetPosition.x * parallaxFactor;
     float mountainY = targetPosition.y * parallaxFactor;
-    view.setSize(view.getSize().x, view.getSize().y); // Assuming this is your game window size
+    view.setSize(view.getSize().x, view.getSize().y);
 }
 
 void Camera::applyTo(sf::RenderWindow& window) {

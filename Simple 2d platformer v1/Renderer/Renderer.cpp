@@ -32,21 +32,18 @@ void Draw(sf::RenderWindow& window) {
     window.clear();
     camera.applyTo(window);
 
-    // Draw mountains with parallax effect
     float parallaxFactor = 0.7f;
     float mountainX = camera.getPosition().x * parallaxFactor;
     float mountainY = camera.getPosition().y * parallaxFactor;
     mountain.setPosition(mountainX, mountainY);
     mountain.draw(window);
 
-    // Render Dirt Objects
     for (float y = 525.f; y <= 575.f; y += 25.f) {
         for (float x = 100.f; x <= 700.f; x += 25.f) {
             dirt.draw(window, x, y);
         }
     }
 
-    // Render Grass Objects
     for (float x = 100.f; x <= 700.f; x += 25.f) {
         grass.draw(window, x, 500.f);
     }
